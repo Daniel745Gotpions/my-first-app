@@ -10,5 +10,5 @@ export class AppComponent {
   onNavigate(feature){
     this.featureLoaded = feature;
   }
-  title = 'my-first-app';
+
 }
