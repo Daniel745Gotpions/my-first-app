@@ -9,11 +9,11 @@ import { Ingredient } from '../../shared/ingredient.model';
 })
 export class ShoppingEditComponent implements OnInit {
   
-  @ViewChild("amountInput") nameInputRef:ElementRef;
-  @ViewChild("nameInput") numberInputRef:ElementRef;
+  @ViewChild("amountInput") numberInputRef:ElementRef;
+  @ViewChild("nameInput") nameInputRef:ElementRef;
   @Output() ingredientAdded = new EventEmitter<Ingredient>();
   constructor() { }
-
+  
   onAddedItem(){
     let nameValue = this.nameInputRef.nativeElement.value;
     let numberValue = this.numberInputRef.nativeElement.value;
