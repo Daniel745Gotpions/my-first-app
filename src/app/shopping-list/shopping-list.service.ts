@@ -18,5 +18,23 @@ export class ShoppingListService{
         this.ingredients.push(ingredient);
         this.ingredientsChanged.emit(this.ingredients.slice());
     }
-    
+
+    addIngredients(newIngredients:Ingredient[]){
+
+        for(let item of newIngredients){
+            let itemExist = 0;
+            
+            for( let ingredient of this.ingredients){
+                if(ingredient.name == item.name ){
+                    itemExist = 1;    
+                }
+            }
+
+            if(!itemExist){
+                this.ingredients.push(item);
+                this.ingredientsChanged.emit(this.ingredients.slice());
+            }
+        } 
+       
+    }
 }

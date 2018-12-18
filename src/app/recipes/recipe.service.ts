@@ -1,9 +1,12 @@
 import {Recipe} from './recipes.model';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter,Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
+@Injectable()
+export class RecipeService{    
+    constructor ( private slService:ShoppingListService){
 
-export class RecipeService{
-    
+    }
     recipeSelected = new  EventEmitter<Recipe>();
 
     private recipes: Recipe[] = [
@@ -15,8 +18,8 @@ export class RecipeService{
                     ,'Big Schnitzel for dinner',
                     'http://pngimg.com/uploads/schnitzel/schnitzel_PNG7.png',
                     [new Ingredient("Schnitzel",1),new Ingredient("Chips",20)]),
-        new Recipe('Burger'
-                   ,'Big Burger for dinner',
+        new Recipe('Big Fat Burger'
+                   ,'Big Fat Burger For Dinner',
                     'http://www.pngmart.com/files/1/Healthy-Burger-PNG.png',
                      [new Ingredient("Buns",1),new Ingredient("Meat",1)]),
       ];
@@ -24,4 +27,8 @@ export class RecipeService{
     getRecipes(){
         return this.recipes.slice();
     }  
+
+    addIngredientToShoppingList(ingredient:Ingredient[]){
+        this.slService.addIngredients(ingredient);
+    }
 }
