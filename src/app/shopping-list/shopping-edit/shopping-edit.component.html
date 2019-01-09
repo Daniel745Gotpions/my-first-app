@@ -1,37 +1,41 @@
 <div class="row">
   <div class="col-xs-12">
-    <form>
+    <form [formGroup]="shoppingEditForm" (ngSubmit)="onAddItem()">
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="name">Name</label>
           <input 
           type="text" 
           class="form-control" 
-          id="name" 
-          name="name"
-          #nameInput>
+          formControlName="name">
+          <span *ngIf="!shoppingEditForm.get('name').valid && shoppingEditForm.get('name').touched"  class="help-block">
+              Name is required field
+          </span>
         </div>
       
           <div class="col-sm-2 form-group">
             <label for="amount">Number</label>
             <input  
             type="number" 
+            pattern="^[1-9]+[0-9]*?"
             class="form-control" 
-            id="amount"
-            name="numberInput"
-            #amountInput>
+            formControlName="amount"
+            >
+            <span *ngIf="!shoppingEditForm.get('amount').valid && shoppingEditForm.get('amount').touched"  class="help-block">
+                amount is required field
+            </span>
           </div>
       </div>
 
       <div class="row">
         <div class="col-xs-12">
           <button 
-          style="margin-right: 5px;" 
-          (click)="onAddedItem()" 
+          [disabled]="!shoppingEditForm.valid"
+          style="margin-right: 5px;"  
           class="btn btn-success" 
-          type="submit">Add</button>
-          <button style="margin-right: 5px;" class="btn btn-danger" type="button">Delete</button>
-          <button style="margin-right: 5px;" class="btn btn-primary" type="button">Clear</button>
+          type="submit">{{editMode ? 'Update': 'Add'}}</button>
+          <button *ngIf="editMode"  (click)="onDeleteItem()" style="margin-right: 5px;" class="btn btn-danger" type="button">Delete</button>
+          <button (click)="clearForm()" style="margin-right: 5px;" class="btn btn-primary" type="button">Clear</button>
         </div>
       </div>
 

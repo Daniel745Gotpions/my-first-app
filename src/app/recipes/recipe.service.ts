@@ -7,7 +7,6 @@ export class RecipeService{
     constructor ( private slService:ShoppingListService){
 
     }
- 
 
     private recipes: Recipe[] = [
         new Recipe('Pizza',
