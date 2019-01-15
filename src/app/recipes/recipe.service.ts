@@ -19,7 +19,7 @@ export class RecipeService{
                     [new Ingredient("Schnitzel",1),new Ingredient("Chips",20)]),
         new Recipe('Big Fat Burger'
                    ,'Big Fat Burger For Dinner',
-                    'http://www.pngmart.com/files/1/Healthy-Burger-PNG.png',
+                    'https://timedotcom.files.wordpress.com/2014/03/mcdonalds-bacon-clubhouse-burger.png?w=720&quality=85',
                      [new Ingredient("Buns",1),new Ingredient("Meat",1)]),
       ];
       
